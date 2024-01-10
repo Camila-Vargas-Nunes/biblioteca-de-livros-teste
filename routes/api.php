@@ -14,6 +14,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+use App\Http\Controllers\LivroController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\AluguelController;
+
+Route::get('/livros', [LivroController::class, 'buscaLivros']);
+Route::get('/livro/{id}', [LivroController::class, 'buscaLivro']);
+Route::put('/livro/{id}', [LivroController::class, 'atualizaLivro']);
+Route::post('/livro', [LivroController::class, 'salvaLivro']);
+Route::delete('/livro/{id}', [LivroController::class, 'deletaLivro']);
+
+Route::get('/usuarios', [UsuarioController::class, 'buscaUsuarios']);
+Route::get('/usuario/{id}', [UsuarioController::class, 'buscaUsuario']);
+Route::put('/usuario/{id}', [UsuarioController::class, 'atualizaUsuario']);
+Route::post('/usuario', [UsuarioController::class, 'salvaUsuario']);
+Route::delete('/usuario/{id}', [UsuarioController::class, 'deletaUsuario']);
+
+Route::get('/alugueis', [AluguelController::class, 'buscaAlugueis']);
+Route::get('/aluguel/{id}', [AluguelController::class, 'buscaAluguel']);
+Route::put('/aluguel/{id}', [AluguelController::class, 'atualizaAluguel']);
+Route::post('/aluguel', [AluguelController::class, 'salvaAluguel']);
+Route::delete('/aluguel/{id}', [AluguelController::class, 'deletaAluguel']);
